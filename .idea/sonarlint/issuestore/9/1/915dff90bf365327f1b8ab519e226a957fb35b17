@@ -1,0 +1,32 @@
+
+`
+java:S1192"KDefine a constant instead of duplicating this literal "Alexandru" 18 times.(Û˜¼b
+f	java:S1170"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëéëý
+f	java:S1171"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÏ‘Ü
+e	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ã€
+f	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÍÎìÙ
+0
+java:S1220""Move this file to a named package.
+R
+java:S18543"<Remove this useless assignment to local variable "JavaRo19".(ÍÎìÙ
+Q
+java:S18542"<Remove this useless assignment to local variable "JavaRo18".(“ã€
+R
+java:S18541"<Remove this useless assignment to local variable "JavaRo17".(ÎÏ‘Ü
+R
+java:S18540"<Remove this useless assignment to local variable "JavaRo16".(ëéëý
+R
+java:S1854"=Remove this useless assignment to local variable "student15".(Ð¥Ï<
+N	java:S106"9Replace this use of System.out or System.err by a logger.(„íí
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(¯†ÎÍøÿÿÿÿ
+V	java:S125&"<This block of commented-out lines of code should be removed.(¼Ö‰Àûÿÿÿÿ
+C
+java:S1481".Remove this unused "student15" local variable.(Ð¥Ï<
+C
+java:S14810"-Remove this unused "JavaRo16" local variable.(ëéëý
+C
+java:S14811"-Remove this unused "JavaRo17" local variable.(ÎÏ‘Ü
+B
+java:S14812"-Remove this unused "JavaRo18" local variable.(“ã€
+C
+java:S14813"-Remove this unused "JavaRo19" local variable.(ÍÎìÙ
