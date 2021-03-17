@@ -8,8 +8,12 @@ public class Trainer extends Person {
         this.isAuthorized = isAuthorized;
     }
 
+    public boolean isAuthorized() {
+        return isAuthorized;
+    }
+
     @Override
     public String toString() {
-        return "Trainer: " + super.toString() + " - IsAuthorized: " + isAuthorized;
+        return " \n    Trainer: " + super.toString() + " - IsAuthorized: " + isAuthorized;
     }
 }
