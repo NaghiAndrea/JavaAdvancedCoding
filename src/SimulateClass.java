@@ -21,7 +21,14 @@ public class SimulateClass {
         printStudentsAlphabeticallyByFirstName();
 
         displayGroupWithMaxNumOfStudent_ClassicMethod();
-        displayAllGroupsWithMaxNumOfStudent_ClassicMethod();
+
+        System.out.println("\n-----------------------------------");
+
+       // System.out.print("Grupele cu maxim numar de studenti(classic method): " + getAllGroupsWithMaxNumOfStudent());
+        System.out.println("Grupele cu maxim numar de studenti (classic method_2): ");
+        for (Group element : getAllGroupsWithMaxNumOfStudent()) {
+            System.out.println("   " + element.getNameOfGroup());
+        }
 
 
         displayGroupWithMaxNumOfStudent_FunctionalMethod();
@@ -54,6 +61,7 @@ public class SimulateClass {
 //
 //        printStudentsAlphabeticallyByFirstName();
 
+        System.out.println("Triplul: " + tripleNumberOfStudentsFromMaxGroup(getAllGroupsWithMaxNumOfStudent()));
     }
 
     private static void printStudents() {
@@ -110,8 +118,7 @@ public class SimulateClass {
         System.out.println(maxGroup);
     }
 
-    private static void displayAllGroupsWithMaxNumOfStudent_ClassicMethod() {
-        System.out.println("\n-----------------------------------");
+    private static List<Group> getAllGroupsWithMaxNumOfStudent() {
 
         List<Group> maxGroupsList = new ArrayList<>();
         Group maxGroup = new Group(null, null, new LinkedHashSet<>());
@@ -125,12 +132,17 @@ public class SimulateClass {
                 maxGroupsList.add(element);
             }
         }
-        //  System.out.print("Grupele cu maxim numar de studenti(classic method): " + maxGroupsList);
-        System.out.println("Grupele cu maxim numar de studenti (classic method_2): ");
-        for (Group element : maxGroupsList) {
-            System.out.println("   " + element.getNameOfGroup());
-        }
+        return maxGroupsList;
     }
+
+    private static int multiplyingNumberOfStudentsFromMaxGroup(int multiplicator,List<Group> maxGroup){
+        return maxGroup.size() * maxGroup.get(0).getListOfStudents().size() * multiplicator;
+    }
+
+    private static int tripleNumberOfStudentsFromMaxGroup(List<Group> maxGroup){
+        return multiplyingNumberOfStudentsFromMaxGroup(3, maxGroup);
+    }
+
 
     private static void displayGroupWithMaxNumOfStudent_FunctionalMethod() {
         //functional method
@@ -386,6 +398,8 @@ public class SimulateClass {
         studentsRo16.add(student2);
         studentsRo16.add(student3);
         studentsRo16.add(student4);
+        studentsRo16.add(student10);
+
 
         studentsRo17 = new LinkedHashSet<>();
         studentsRo17.add(student5);
