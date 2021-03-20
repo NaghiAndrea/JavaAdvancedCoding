@@ -44,9 +44,15 @@ public class SimulateClass {
 
         dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge();
 
-        removeStudentsYoungerThanFromGroups(25);
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2();
 
-        printStudentsAlphabeticallyByFirstName();
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3();
+
+        dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4();
+
+//        removeStudentsYoungerThanFromGroups(25);
+//
+//        printStudentsAlphabeticallyByFirstName();
 
     }
 
@@ -133,9 +139,10 @@ public class SimulateClass {
         groups.stream()
                 .filter(g -> g.getListOfStudents().size() ==
                         groups.stream()
-                                .max(Comparator.comparingInt(g1 -> g1.getListOfStudents().size())).get().getListOfStudents().size())
-                // .max((g1,g2) -> Integer.compare(g1.getListOfStudents().size(),g2.getListOfStudents().size()))
-                //   .get().getListOfStudents().size())
+                                .max(Comparator.comparingInt(g1 -> g1.getListOfStudents().size()))
+                                .get().getListOfStudents().size())
+//                 .max((g1,g2) -> Integer.compare(g1.getListOfStudents().size(),g2.getListOfStudents().size()))
+//                   .get().getListOfStudents().size())
 
                 //Altfel (sortat in ordine crescatoare si luat primul element ca max):
                 // groups.stream()
@@ -153,7 +160,8 @@ public class SimulateClass {
         groups.stream()
                 .filter(g -> g.getListOfStudents().size() ==
                         groups.stream()
-                                .min(Comparator.comparingInt(g1 -> g1.getListOfStudents().size())).get().getListOfStudents().size())
+                                .min(Comparator.comparingInt(g1 -> g1.getListOfStudents().size()))
+                                .get().getListOfStudents().size())
                 // .map(Group::getNameOfGroup)       //va lista doar numele grupelor(daca decomentez linia aceasta)
                 .forEach(System.out::println);
     }
@@ -234,6 +242,59 @@ public class SimulateClass {
         System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: " + groups.get(maxIndex));
     }
 
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge2() {
+        System.out.println("\n-----------------2------------------");
+
+        //afiseaza primul grup (chiar daca sunt mai multe cu acelasi numar de studenti fara cunostinte)
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: " +
+
+                groups.stream()
+                        .max(Comparator.comparing(g ->
+                                g.getListOfStudents().stream()
+                                        .filter(st -> st.isHasPreviousJavaKnowledge() == false)
+                                        .count()))
+                        .get()
+                        .toString()
+        );
+    }
+
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge3() {
+        System.out.println("\n-----------------3------------------");
+
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: ");
+
+        groups.stream()
+                .filter(group -> group.getListOfStudents().stream()
+                        .filter(st -> !st.isHasPreviousJavaKnowledge())
+                        .count() ==
+                        groups.stream()
+                                .max(Comparator.comparing(g ->
+                                        g.getListOfStudents().stream()
+                                                .filter(st -> !st.isHasPreviousJavaKnowledge())
+                                                .count()))
+                                .get().getListOfStudents().stream()
+                                .filter(student -> !student.isHasPreviousJavaKnowledge())
+                                .count()
+                )
+                .forEach(group -> System.out.println(group));
+    }
+
+    private static void dispGroupWithMaxNumOfStudentsWithNOJavaKnowledge4() {
+        System.out.println("\n-----------------4------------------");
+
+        //Am facut un getter in clasa Group care numara studentii fara cunostinte Java
+        System.out.print("Grupa cu cei mai multi studenti care nu au cunostinte Java: ");
+
+        groups.stream()
+                .filter(group -> group.getNumOfStudentsWithNoPrevJavaKnow() ==
+                        groups.stream()
+                                .max(Comparator.comparing(group1 -> group1.getNumOfStudentsWithNoPrevJavaKnow()))
+                                .get().getNumOfStudentsWithNoPrevJavaKnow()
+                )
+                .forEach(group -> System.out.println(group));
+    }
+
+
     private static void removeStudentsYoungerThanFromGroups(int age) {
         System.out.println("\n-----------------------------------");
 
@@ -284,20 +345,20 @@ public class SimulateClass {
 
     private static void addStudents() {
         //Students
-        Student student1 = new Student("Student01", "CAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), false);
+        Student student1 = new Student("Student01", "CAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), true);
         Student student2 = new Student("Student02", "HAlexandru", LocalDate.of(1992, Month.OCTOBER, 12), false);
         Student student3 = new Student("Student03", "BAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), false);
         Student student4 = new Student("Student04", "NAlexandru", LocalDate.of(1996, Month.OCTOBER, 12), true);
-        Student student5 = new Student("Student05", "KAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), false);
+        Student student5 = new Student("Student05", "KAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), true);
         Student student6 = new Student("Student06", "HAlexandru", LocalDate.of(1980, Month.OCTOBER, 12), false);
-        Student student7 = new Student("Student07", "DAlexandru", LocalDate.of(1985, Month.OCTOBER, 12), false);
+        Student student7 = new Student("Student07", "DAlexandru", LocalDate.of(1985, Month.OCTOBER, 12), true);
         Student student8 = new Student("Student08", "Alexandru", LocalDate.of(1998, Month.OCTOBER, 12), false);
         Student student9 = new Student("Student09", "TAlexandru", LocalDate.of(1999, Month.OCTOBER, 12), true);
         Student student10 = new Student("Student10", "LAlexandru", LocalDate.of(1998, Month.OCTOBER, 12), false);
-        Student student11 = new Student("Student11", "RAlexandru", LocalDate.of(1978, Month.OCTOBER, 12), true);
+        Student student11 = new Student("Student11", "RAlexandru", LocalDate.of(1978, Month.OCTOBER, 12), false);
         Student student12 = new Student("Student12", "MAlexandru", LocalDate.of(1982, Month.OCTOBER, 12), false);
         Student student13 = new Student("Student13", "ZAlexandru", LocalDate.of(1997, Month.OCTOBER, 12), false);
-        Student student14 = new Student("Student14", "QAlexandru", LocalDate.of(1987, Month.OCTOBER, 12), true);
+        Student student14 = new Student("Student14", "QAlexandru", LocalDate.of(1987, Month.OCTOBER, 12), false);
         Student student15 = new Student("Student15", "PAlexandru", LocalDate.of(1991, Month.OCTOBER, 12), false);
 
         System.out.println(student1);

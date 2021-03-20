@@ -71,6 +71,14 @@ public class Group {
         }
     }
 
+    public int getNumOfStudentsWithNoPrevJavaKnow(){
+        int count = 0;
+        for (Student student : listOfStudents){
+            if (!student.isHasPreviousJavaKnowledge()) {count++;}
+        }
+        return count;
+    }
+
     @Override
     public String toString() {
         return "\nGroup " + nameOfGroup + "{\n" +
